@@ -1,4 +1,4 @@
-# cli-version
+# cafe-app-vue
 
 ## Project setup
 ```
