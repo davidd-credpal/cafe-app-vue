@@ -6,6 +6,9 @@
       <div class="sm:mx-0 lg:mx-16">
         <h3 class="font-semibold">Call Us: {{ phone }}</h3>
       </div>
+      <div>
+        
+      </div>
       <div class="sm:mx-0 lg:mx-16 items-center">
         <aside>
           <h2 class="text-white font-semibold">

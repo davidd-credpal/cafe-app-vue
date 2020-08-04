@@ -1,5 +1,8 @@
 <template>
-  <div id="app" class="lg:container lg:mx-auto h-full bg-green-100 w-full">
+  <div
+    id="app"
+    class="lg:container lg:mx-auto h-full bg-green-100 w-full antialiased"
+  >
     <Header :phone="phone" :shoppingCart="shoppingCart" />
     <div class="justify-center">
       <img
@@ -28,23 +31,31 @@
       </p>
     </div>
     <section class="menu mt-6">
-      <h2 class="text-4xl text-center uppercase font-semibold text-h1 text-o">
+      <h2 class="text-4xl text-center uppercase font-semibold text-h1">
         Menu
       </h2>
-      <menuItem :addToShoppingCartFunc="addToShoppingCart" />
+      <h4 class="text-gray-700 font-semibold capitalize tracking-widest">
+        Enjoy 10% Discount Every Even day of the week
+      </h4>
+      <!-- menuitem component -->
+      <!-- <menuItem :addToShoppingCartFunc="addToShoppingCart" /> -->
+      <div class="md:flex mx-10 my-4">
+        <menuItem
+          v-for="item in simpleMenu"
+          :addToShoppingCart="addToShoppingCart"
+          :name="item.name"
+          :image="item.image"
+          :price="item.price"
+          :quantity="item.quantity"
+          :inStock="item.inStock"
+          :day="day"
+          :discountedPrice="discountedPrice"
+          :key="item.name"
+        />
+      </div>
     </section>
-    <div>
-      <h2 class="text-3xl mt-8 text-h1 uppercase">Contact Us</h2>
-      <p>Address: {{ address }}</p>
-      <p>Phone: {{ phone }}</p>
-      <p>Email: {{ email }}</p>
-      <p class="text-2xl m-3 text-h1 uppercase">Hours:</p>
-      <ul>
-        <li>Monday-Friday: 06:00 to 16:00</li>
-        <li>Saturday: 07:00 to 14:00</li>
-        <li>Sunday: 07:00 to 12:00</li>
-      </ul>
-    </div>
+    
+    <Contact />
 
     <footer class="footer mt-3 p-5 text-lg">
       <p>{{ copyright }}</p>
@@ -55,12 +66,14 @@
 <script>
 import MenuItem from "@/components/MenuItem";
 import Header from "@/components/Header";
+import Contact from "@/components/Contact";
 
 export default {
-  el: "#app",
+  // el: "#app",
   components: {
     MenuItem,
     Header,
+    Contact,
   },
   data: function() {
     return {
@@ -75,6 +88,38 @@ export default {
         headerImage: "images/header-image-restaurant-food-wraps.png",
         altHeaderImage: "header_image_restaurant_food_wraps",
       },
+      simpleMenu: [
+        {
+          name: "Crossiant",
+          image: {
+            source: "images/crossiant.jpg",
+            alt: "A crossiant",
+          },
+          inStock: true,
+          quantity: 1,
+          price: 2.99,
+        },
+        {
+          name: "French Baguette",
+          image: {
+            source: "images/french-baguette.jpeg",
+            alt: "Four French Baguettes",
+          },
+          inStock: true,
+          quantity: 1,
+          price: 3.99,
+        },
+        {
+          name: "Éclair",
+          image: {
+            source: "images/eclair.jpg",
+            alt: "Chocolate Éclair",
+          },
+          inStock: false,
+          quantity: 1,
+          price: 4.99,
+        },
+      ],
     };
   },
   computed: {
@@ -123,9 +168,7 @@ ul > li {
     top: 0;
   }
 }
-/* .background-image {
-  background-color: linear-gradient(rgba(0, 0, 0, 0.5), rgba(175, 56, 56, 0.5));
-} */
+
 .description {
   max-width: 960px;
   font-size: 1.2rem;
