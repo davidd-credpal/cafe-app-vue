@@ -1,10 +1,10 @@
 <template>
   <div
     id="app"
-    class="lg:container lg:mx-auto h-full bg-green-100 w-full antialiased"
+    class="h-full antialiased"
   >
     <Header :phone="phone" :shoppingCart="shoppingCart" />
-    <div class="justify-center">
+    <div class="justify-center bg-green-100">
       <img
         class="w-full bg-no-repeat bg-center bg-cover object-cover relative"
         :src="backgroundImage.headerImage"

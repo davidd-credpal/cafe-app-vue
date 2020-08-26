@@ -26,6 +26,7 @@
           >
             Add to Cart
           </button>
+          
         </div>
       </div>
     </div>
@@ -50,12 +51,7 @@ export default {
 };
 </script>
 <style scoped>
-/* .menu-item {
-  display: flex;
-  width: 500px;
-  justify-content: space-between;
-  margin-bottom: 30px;
-} */
+
 
 .menu-item__image {
   /* max-width: 250px; */
